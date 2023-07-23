@@ -51,5 +51,6 @@
       "unitTestRunner": "vitest",
       "e2eTestRunner": "cypress"
     }
-  }
+  },
+  "plugins": ["@register-targets-sample/my-plugin"]
 }

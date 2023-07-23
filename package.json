@@ -2,7 +2,9 @@
   "name": "@register-targets-sample/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "nx": "nx"
+  },
   "private": true,
   "devDependencies": {
     "@nx/cypress": "16.5.5",

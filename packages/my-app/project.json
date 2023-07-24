@@ -4,53 +4,5 @@
   "projectType": "application",
   "sourceRoot": "packages/my-app/src",
   "tags": [],
-  "targets": {
-    "serve": {
-      "executor": "@nx/vite:dev-server",
-      "defaultConfiguration": "development",
-      "options": {
-        "buildTarget": "my-app:build"
-      },
-      "configurations": {
-        "development": {
-          "buildTarget": "my-app:build:development",
-          "hmr": true
-        },
-        "production": {
-          "buildTarget": "my-app:build:production",
-          "hmr": false
-        }
-      }
-    },
-    "preview": {
-      "executor": "@nx/vite:preview-server",
-      "defaultConfiguration": "development",
-      "options": {
-        "buildTarget": "my-app:build"
-      },
-      "configurations": {
-        "development": {
-          "buildTarget": "my-app:build:development"
-        },
-        "production": {
-          "buildTarget": "my-app:build:production"
-        }
-      }
-    },
-    "test": {
-      "executor": "@nx/vite:test",
-      "outputs": ["coverage/packages/my-app"],
-      "options": {
-        "passWithNoTests": true,
-        "reportsDirectory": "../../coverage/packages/my-app"
-      }
-    },
-    "lint": {
-      "executor": "@nx/linter:eslint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": ["packages/my-app/**/*.ts"]
-      }
-    }
-  }
+  "targets": {}
 }

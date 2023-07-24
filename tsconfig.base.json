@@ -15,7 +15,19 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@register-targets-sample/my-plugin": ["packages/my-plugin/src/index.ts"]
+      "@register-targets-sample/domain-library": [
+        "packages/domain-library/src/index.ts"
+      ],
+      "@register-targets-sample/feature-library": [
+        "packages/feature-library/src/index.ts"
+      ],
+      "@register-targets-sample/my-plugin": ["packages/my-plugin/src/index.ts"],
+      "@register-targets-sample/ui-library": [
+        "packages/ui-library/src/index.ts"
+      ],
+      "@register-targets-sample/utils-library": [
+        "packages/utils-library/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -1,29 +1,31 @@
-import {TargetConfiguration} from "nx/src/config/workspace-json-project-json";
-import {normalizePath} from 'nx/src/utils/path';
+import { TargetConfiguration } from 'nx/src/config/workspace-json-project-json';
+import { getProjectType, ProjectType } from './utils/project-utils';
+import { registerAppTargets } from './application/register-targets';
+import { registerE2ETargets } from './e2e/register-targets';
+import { registerLibDomainTargets } from './library/domain/register-targets';
+import { registerLibFeatureTargets } from './library/feature/register-targets';
+import { registerLibUITargets } from './library/ui/register-targets';
+import { registerLibUtilsTargets } from './library/utils/register-targets';
 
 export const projectFilePatterns = ['project.json'];
 
-export function registerProjectTargets(projectPath: string): Record<string, TargetConfiguration> {
-  const normalizedPath = normalizePath(projectPath);
-  const projectRoot = normalizedPath.replace('/project.json','');
-  const projectName = projectRoot.split('/').pop();
+const projectTypeToRegisterRouting: Record<
+  ProjectType,
+  (projectPath: string) => Record<string, TargetConfiguration>
+> = {
+  APP: registerAppTargets,
+  E2E: registerE2ETargets,
+  LIB_DOMAIN: registerLibDomainTargets,
+  LIB_FEATURE: registerLibFeatureTargets,
+  LIB_UI: registerLibUITargets,
+  LIB_UTILS: registerLibUtilsTargets,
+};
 
-  return {
-    build: {
-      "executor": "@nx/vite:build",
-      "outputs": ["{options.outputPath}"],
-      "defaultConfiguration": "production",
-      "options": {
-        "outputPath": `dist/packages/${projectName}`
-      },
-      "configurations": {
-        "development": {
-          "mode": "development"
-        },
-        "production": {
-          "mode": "production"
-        }
-      }
-    },
-  };
+export function registerProjectTargets(
+  projectPath: string
+): Record<string, TargetConfiguration> {
+  const projectType = getProjectType(projectPath);
+  const registerProjectTargetFn = projectTypeToRegisterRouting[projectType];
+
+  return registerProjectTargetFn ? registerProjectTargetFn(projectPath) : {};
 }

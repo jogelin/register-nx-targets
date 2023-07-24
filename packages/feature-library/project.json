@@ -1,0 +1,8 @@
+{
+  "name": "feature-library",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/feature-library/src",
+  "projectType": "library",
+  "targets": {},
+  "tags": []
+}

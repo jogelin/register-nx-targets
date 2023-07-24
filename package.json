@@ -8,6 +8,7 @@
   "private": true,
   "devDependencies": {
     "@nx/cypress": "16.5.5",
+    "@nx/esbuild": "16.5.5",
     "@nx/eslint-plugin": "16.5.5",
     "@nx/jest": "16.5.5",
     "@nx/js": "16.5.5",
@@ -26,6 +27,7 @@
     "@vitest/coverage-c8": "~0.32.0",
     "@vitest/ui": "~0.32.0",
     "cypress": "^12.16.0",
+    "esbuild": "^0.17.17",
     "eslint": "~8.15.0",
     "eslint-config-prettier": "8.1.0",
     "eslint-plugin-cypress": "^2.10.3",

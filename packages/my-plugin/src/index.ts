@@ -5,7 +5,8 @@ export const projectFilePatterns = ['project.json'];
 
 export function registerProjectTargets(projectPath: string): Record<string, TargetConfiguration> {
   const normalizedPath = normalizePath(projectPath);
-  const projectName = normalizedPath.substring(0, normalizedPath.lastIndexOf('/'));
+  const projectRoot = normalizedPath.replace('/project.json','');
+  const projectName = projectRoot.split('/').pop();
 
   return {
     build: {
